@@ -1,8 +1,12 @@
 
-# CHAI Weather Data Platform – Technical Assessment
+# CHAI Weather Data Platform 
+Technical Assessment
+
 
 Author: Emmanuel BAMBANZA
+
 Role: Data Engineer, Tech Advisor CHAI, Assessment
+
 Tech Stack: Python, Airflow, Docker, PostgreSQL, Metabase
 
 Overview
@@ -53,7 +57,8 @@ The solution includes:
                       └─────────────┘
 
 
-chaid_assessment/
+
+chai_assessment/
 
  ├── airflow/                  # Airflow configs, logs excluded via .gitignore
  ├── airflow/dags/             # weather_etl_pipeline DAG
@@ -75,17 +80,17 @@ chaid_assessment/
 Running the Entire Platform
 
 1. Clone the repository
+-------------------------
 git clone https://github.com/bambanza/chai_assessment.git
 cd chai_assessment
 
 
 Start the platform
-
 docker compose up --build
 
 
 This will automatically start:
-
+--------------------------------
 Service	Description
 postgres	Data warehouse
 pipeline	One-off ingestion + transformation run
@@ -95,6 +100,7 @@ metabase-init	Automatically configures Metabase
 
 
 3. Access Services
+-------------------   
 Component	URL
 Airflow UI	http://localhost:8080
 Metabase Dashboard	http://localhost:3000
@@ -106,8 +112,7 @@ password: admin
 
 Metabase is auto-initialized by metabase-init.
 
-Features Implemented
-Multi-City weather ingestion
+Features Implemented : Multi-City weather ingestion
 
 Cities include:
   Kigali
@@ -117,26 +122,28 @@ Cities include:
 Raw → Clean → Warehouse flow
 
 Stages:
-
+--------------------
 Raw CSV: data/raw/weather_raw.csv
 Clean CSV: data/processed/weather_clean.csv
 Staging Table: staging_weather
 Mart Table: mart_daily_city_weather
 
 Enrichment using external CSV
+--------------------------------
 data/raw/cities.csv includes:
 city
 population
 area_km2
 
 This is joined into the mart layer.
-
 #Airflow DAG
 DAG ID: weather_etl_pipeline
-Pipeline:
+Pipeline Runs daily:
 ingest_weather  →  transform_weather  →  model_weather
-Runs daily.
-✔ Metabase Dashboard
+
+
+Metabase Dashboard
+---------------------
 Auto-created on startup:
 Temperature & humidity tables
 City-level daily aggregates
