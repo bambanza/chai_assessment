@@ -4,7 +4,7 @@ This project implements a simple end-to-end weather ETL pipeline for the CHAI Da
 It uses Docker, Airflow, PostgreSQL, and Metabase to demonstrate ingestion, transformation, loading, and visualization.
 
 1. How to Run the Pipeline End-to-End
---------------------------------------
+-
 Step 1 — Start everything
 ---
 docker compose up --build
