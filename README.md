@@ -12,24 +12,24 @@ How to Run the Pipeline End-to-End
 
 Step 1 — Start everything
 --------------------------
-    RUN : docker compose up --build
+ RUN : `docker compose up --build`
 
 This will automatically:
 
-Start PostgreSQL and create all tables via db/init.sql.
-
-Run the Python ETL pipeline once (ingest → transform → model).
-
-Start Airflow with the DAG weather_etl_pipeline.
-
-Start Metabase for visualization.
+* Start PostgreSQL and create all tables via db/init.sql.
+* Run the Python ETL pipeline once (ingest → transform → model).
+* Start Airflow with the DAG weather_etl_pipeline.
+* Start Metabase for visualization.
 
 Step 2 — Trigger the scheduled ETL
 ----
 Open Airflow UI: http://localhost:8080
-User: admin
-Password: admin
+
+`User: admin
+Password: admin`
+
 Turn on the DAG: weather_etl_pipeline
+
 Click Trigger DAG to run a full cycle.
 
 
@@ -46,31 +46,25 @@ You only need:
 
 Services started:
 
-
-    Postgres	localhost:5433
-    Airflow	http://localhost:8080
-    Metabase http://localhost:3000
+    Postgres        http://localhost:5433
+    Airflow	        http://localhost:8080
+    Metabase        http://localhost:3000
     
 Pipeline Standalone ETL runner which runs once at startup
 
 Database credentials (inside Docker):
 ----
-    DB: chaidb
-    User: chai
-    Pass: chai123
-    Host: postgres
+    Host:   postgres
+    DB:     chaidb
+    User:   chai
+    Pass:   chai123
+    
 
 Data Sources Used
 ---
-Weather API (Open-Meteo)
-: The pipeline fetches live hourly weather for:
-    Kigali
-    Huye
-    Musanze
+* **Weather API (Open-Meteo)** The pipeline fetches live hourly weather for 3 Cities in Rwanda (Kigali, Musanze and Huye)  ` URL: "https://api.open-meteo.com/v1/forecast?latitude=<lat>&longitude=<lon>&hourly=temperature_2m,relative_humidity_2m,weathercode&timezone=UTC"`
 
-    Example endpoint: "https://api.open-meteo.com/v1/forecast?latitude=<lat>&longitude=<lon>&hourly=temperature_2m,relative_humidity_2m,weathercode&timezone=UTC"
-
-City Metadata (CSV) (data/cities.csv) provides: coordinates, population and area_km2 used to enrich the final analytic mart.
+* **City Metadata (CSV) (data/cities.csv)** provides: coordinates, population and area_km2 used to enrich the final analytic mart.
 
 
 How to Validate Data Movement Through Each Stage
