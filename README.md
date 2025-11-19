@@ -1,157 +1,90 @@
+CHAI Weather ETL – README
 
-# CHAI Weather Data Platform 
-Technical Assessment
+This project implements a simple end-to-end weather ETL pipeline for the CHAI Data Engineer Technical Assessment.
+It uses Docker, Airflow, PostgreSQL, and Metabase to demonstrate ingestion, transformation, loading, and visualization.
 
-
-Author: Emmanuel BAMBANZA
-
-Role: Data Engineer, Tech Advisor CHAI, Assessment
-
-Tech Stack: Python, Airflow, Docker, PostgreSQL, Metabase
-
-Overview
-
-This project implements a mini end-to-end data platform for CHAI’s technical assessment.
-It ingests live weather data from the Open-Meteo API for multiple Rwandan cities, cleans
-and transforms it, loads it into a PostgreSQL warehouse, and exposes a simple visualization
-dashboard via Metabase.
-
-The solution includes:
-
-• Automated ETL Pipeline (Python + Docker)
-• Airflow Orchestrated DAG (daily schedule)
-• PostgreSQL Warehouse (staging + mart layers)
-• Data Enrichment using local city metadata (population + area)
-• Metabase Dashboard (auto-configured)
-• Fully reproducible Docker Compose environment
-
-                     ┌───────────────┐
-                     │ Open-Meteo API│
-                     └───────┬───────┘
-                             │  Ingest
-                             ▼
-                   ┌─────────────────────┐
-                   │  pipeline/ingest.py │
-                   └─────────┬───────────┘
-                             │ Clean/Enrich
-                             ▼
-                  ┌───────────────────────┐
-                  │  pipeline/transform.py │
-                  └──────────┬────────────┘
-                             │ Load to DB
-                             ▼
-                  ┌────────────────────────┐
-                  │ pipeline/model.py       │
-                  │  - staging_weather      │
-                  │  - mart_daily_city_*    │
-                  └──────────┬─────────────┘
-                             │ Orchestrate
-                             ▼
-                      ┌─────────────┐
-                      │   Airflow   │
-                      └──────┬──────┘
-                             │ Query
-                             ▼
-                      ┌─────────────┐
-                      │  Metabase   │
-                      └─────────────┘
-
-
-
-chai_assessment/
-
- ├── airflow/                  # Airflow configs, logs excluded via .gitignore
- ├── airflow/dags/             # weather_etl_pipeline DAG
- ├── pipeline/
- │    ├── ingest.py            # API ingestion
- │    ├── transform.py         # cleaning + CSV output
- │    ├── model.py             # load to DB + aggregation
- │    └── run_pipeline.py      # CLI runner
- ├── db/init.sql               # PostgreSQL schema creation
- ├── data/raw/                 # raw CSV (generated)
- ├── data/processed/           # cleaned CSV (generated)
- ├── metabase-data/            # local config (ignored)
- ├── metabase-init/            # automated Metabase setup
- ├── docker-compose.yml        # full platform stack
- ├── Dockerfile                # pipeline image
- ├── Dockerfile.airflow        # Airflow custom build
- └── README.md
-
-Running the Entire Platform
-
-1. Clone the repository
--------------------------
-git clone https://github.com/bambanza/chai_assessment.git
-cd chai_assessment
-
-
-Start the platform
+1. How to Run the Pipeline End-to-End
+--------------------------------------
+Step 1 — Start everything
+---
 docker compose up --build
+This will automatically:
 
+Start PostgreSQL and create all tables via db/init.sql.
+Run the Python ETL pipeline once (ingest → transform → model).
+Start Airflow with the DAG weather_etl_pipeline.
+Start Metabase for visualization.
 
-This will automatically start:
---------------------------------
-Service	Description
-postgres	Data warehouse
-pipeline	One-off ingestion + transformation run
-airflow	Webserver + scheduler
-metabase	Dashboard UI
-metabase-init	Automatically configures Metabase
+Step 2 — Trigger the scheduled ETL
+----
+Open Airflow UI: http://localhost:8080
+User: admin
+Password: admin
+Turn on the DAG: weather_etl_pipeline
+Click Trigger DAG to run a full cycle.
 
+2. Dependencies and Setup
+-------------------------------
+No manual installation required — everything runs in Docker.
 
-3. Access Services
--------------------   
-Component	URL
-Airflow UI	http://localhost:8080
-Metabase Dashboard	http://localhost:3000
+You only need:
+Docker
+Docker Compose
+Git
 
-Airflow Login:
-username: admin
-password: admin
+Services started:
 
+Service	Purpose	URL/Port
+Postgres	Data warehouse	localhost:5433
+Airflow	Orchestration	http://localhost:8080
+Metabase : http://localhost:3000
+Pipeline Standalone ETL runner which runs once at startup
 
-Metabase is auto-initialized by metabase-init.
+Database credentials (inside Docker):
+----
+DB: chaidb
+User: chai
+Pass: chai123
+Host: postgres
 
-Features Implemented : Multi-City weather ingestion
-
-Cities include:
-  Kigali
-  Musanze
-  Huye
-
-Raw → Clean → Warehouse flow
-
-Stages:
---------------------
-Raw CSV: data/raw/weather_raw.csv
-Clean CSV: data/processed/weather_clean.csv
-Staging Table: staging_weather
-Mart Table: mart_daily_city_weather
-
-Enrichment using external CSV
---------------------------------
-data/raw/cities.csv includes:
-city
-population
-area_km2
-
-This is joined into the mart layer.
-#Airflow DAG
-DAG ID: weather_etl_pipeline
-Pipeline Runs daily:
-ingest_weather  →  transform_weather  →  model_weather
-
-
-Metabase Dashboard
+3. Data Sources Used
 ---------------------
-Auto-created on startup:
-Temperature & humidity tables
-City-level daily aggregates
-Population vs temperature insight
+Weather API (Open-Meteo)
+The pipeline fetches live hourly weather for:
+    Kigali
+    Huye
+    Musanze
 
-Notes for Reviewer
+Example endpoint:
 
-No secrets are included; all connection strings use local service names.
-Logs and metabase database are excluded from Git thanks to .gitignore.
+https://api.open-meteo.com/v1/forecast?latitude=<lat>&longitude=<lon>&hourly=temperature_2m,relative_humidity_2m,weathercode&timezone=UTC
 
-Everything is fully reproducible with a single command.
+City Metadata (CSV) (data/cities.csv) provides: coordinates, population and area_km2 used to enrich the final analytic mart.
+
+4. How to Validate Data Movement Through Each Stage
+---------------------------------------------------
+1 — Extract (Raw) Check raw file generated:  data/raw/weather_raw.csv
+
+2 — Transform (Processed) data/processed/weather_clean.csv
+
+3 — Load (Database) Connect to Postgres: psql -h localhost -p 5433 -U chai -d chaidb
+
+    Check staging: SELECT COUNT(*) FROM staging_weather;
+    Check mart: SELECT * FROM mart_daily_city_weather ORDER BY date DESC;
+
+4 — Airflow Orchestration
+
+In the Airflow UI, confirm all tasks:
+
+ingest_weather
+transform_weather
+model_weather
+turn green and logs show processing steps.
+
+5 — Visualization in Metabase
+---------------------------
+Open Metabase:
+http://localhost:3000
+Verify tables appear under chaidb
+Explore mart_daily_city_weather
+Dashboard updates after each DAG run
