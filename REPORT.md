@@ -21,7 +21,7 @@ The pipeline uses only public, non-sensitive data, including weather information
 
 **The design mirrors standard CHAI-style pipelines:** raw → curated → analytical tables, all orchestrated through Airflow, with logs, retries, and observability built in by default.
 
-(etl.png "ETL image.")
+![ETL image](etl.png "ETL image.")
 
 ## 2. Optimization Choices
 
