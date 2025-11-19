@@ -1,0 +1,8 @@
+logs/
+airflow/logs/
+*.pid
+*.mv.db
+*.trace.db
+*.db~
+__pycache__/
+*.pyc
