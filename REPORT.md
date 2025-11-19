@@ -1,11 +1,8 @@
 ## CHAI/NHIC Data Engineering, Tech advisor.
 Executive Summary Report  for the Technical Assessment Exercise
-
-## Authors
-E. BAMBANZA
-- [@bambanza](https://www.github.com/bambanza)
-
+By Emmanuel BAMBANZA
 Repo : https://github.com/bambanza/chai_assessment
+
 
 ## 1.  Architecture & Design Overview
 
@@ -56,6 +53,7 @@ The current stack is intentionally simple, but ready to evolve:
 * Add Great Expectations for data validation
 * Add CI/CD (GitHub Actions) for automated testing and deployment
 * Use Terraform to fully provision infrastructure and Ansible to manage various tasks.
+* When handling real data, comply with all relevant data-privacy regulations (GDPR, CPRA/CCPA, Rwanda’s DPO).
 ## 4. AI usage
 To speed up the project, different AI tools have been used :
 
