@@ -1,0 +1,22 @@
+[2025-11-19T04:44:27.969+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T04:44:27.974+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.ingest_weather manual__2025-11-19T04:44:27.071444+00:00 [queued]>
+[2025-11-19T04:44:27.976+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.ingest_weather manual__2025-11-19T04:44:27.071444+00:00 [queued]>
+[2025-11-19T04:44:27.976+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T04:44:27.980+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): ingest_weather> on 2025-11-19 04:44:27.071444+00:00
+[2025-11-19T04:44:27.983+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'ingest_weather', 'manual__2025-11-19T04:44:27.071444+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmpacpnw_8i']
+[2025-11-19T04:44:27.984+0000] {standard_task_runner.py:105} INFO - Job 24: Subtask ingest_weather
+[2025-11-19T04:44:27.984+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=4423) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T04:44:27.985+0000] {standard_task_runner.py:72} INFO - Started process 4425 to run task
+[2025-11-19T04:44:28.000+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.ingest_weather manual__2025-11-19T04:44:27.071444+00:00 [running]> on host e821f55e9d15
+[2025-11-19T04:44:28.024+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='ingest_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-19T04:44:27.071444+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-19T04:44:27.071444+00:00'
+[2025-11-19T04:44:28.025+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T04:44:28.032+0000] {logging_mixin.py:190} INFO - [INGEST] Requesting Kigali: https://api.open-meteo.com/v1/forecast?latitude=-1.95&longitude=30.0588&hourly=temperature_2m,relative_humidity_2m,weathercode&forecast_days=2&timezone=UTC
+[2025-11-19T04:44:28.800+0000] {logging_mixin.py:190} INFO - [INGEST] Requesting Musanze: https://api.open-meteo.com/v1/forecast?latitude=-1.5&longitude=29.63&hourly=temperature_2m,relative_humidity_2m,weathercode&forecast_days=2&timezone=UTC
+[2025-11-19T04:44:29.664+0000] {logging_mixin.py:190} INFO - [INGEST] Requesting Huye: https://api.open-meteo.com/v1/forecast?latitude=-2.609&longitude=29.74&hourly=temperature_2m,relative_humidity_2m,weathercode&forecast_days=2&timezone=UTC
+[2025-11-19T04:44:30.407+0000] {logging_mixin.py:190} INFO - [INGEST] Saved raw data → /opt/airflow/data/raw/weather_raw.csv
+[2025-11-19T04:44:30.408+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T04:44:30.421+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T04:44:30.421+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=ingest_weather, run_id=manual__2025-11-19T04:44:27.071444+00:00, execution_date=20251119T044427, start_date=20251119T044427, end_date=20251119T044430
+[2025-11-19T04:44:30.441+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T04:44:30.458+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T04:44:30.459+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

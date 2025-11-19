@@ -1,0 +1,126 @@
+[2025-11-19T00:00:05.613+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T00:00:05.618+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T00:00:05.620+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T00:00:05.620+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T00:00:05.624+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T00:00:05.627+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmp8t0ja5mt']
+[2025-11-19T00:00:05.628+0000] {standard_task_runner.py:105} INFO - Job 14: Subtask model_weather
+[2025-11-19T00:00:05.628+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1014) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T00:00:05.629+0000] {standard_task_runner.py:72} INFO - Started process 1016 to run task
+[2025-11-19T00:00:05.645+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host e821f55e9d15
+[2025-11-19T00:00:05.669+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T00:00:05.669+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T00:00:05.681+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T00:00:05.685+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 48 rows into staging_weather
+[2025-11-19T00:00:05.687+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T00:00:05.687+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T00:00:05.692+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T00:00:05.692+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T000005, end_date=20251119T000005
+[2025-11-19T00:00:05.730+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T00:00:05.737+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T00:00:05.737+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-11-19T04:56:28.697+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T04:56:28.702+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T04:56:28.704+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T04:56:28.704+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T04:56:28.708+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T04:56:28.711+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmpe_2y_0ex']
+[2025-11-19T04:56:28.712+0000] {standard_task_runner.py:105} INFO - Job 7: Subtask model_weather
+[2025-11-19T04:56:28.712+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=241) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T04:56:28.713+0000] {standard_task_runner.py:72} INFO - Started process 243 to run task
+[2025-11-19T04:56:28.728+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host 8720ca4bc1c2
+[2025-11-19T04:56:28.751+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T04:56:28.751+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T04:56:28.763+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T04:56:28.772+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 144 rows into staging_weather
+[2025-11-19T04:56:28.774+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T04:56:28.774+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T04:56:28.777+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T04:56:28.777+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T045628, end_date=20251119T045628
+[2025-11-19T04:56:28.816+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T04:56:28.822+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T04:56:28.823+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-11-19T05:42:35.208+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T05:42:35.214+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T05:42:35.216+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T05:42:35.216+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T05:42:35.221+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T05:42:35.224+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmpetr8r7qb']
+[2025-11-19T05:42:35.225+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=228) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T05:42:35.226+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask model_weather
+[2025-11-19T05:42:35.226+0000] {standard_task_runner.py:72} INFO - Started process 231 to run task
+[2025-11-19T05:42:35.247+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host ea26307e7683
+[2025-11-19T05:42:35.276+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T05:42:35.276+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T05:42:35.290+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T05:42:35.299+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 144 rows into staging_weather
+[2025-11-19T05:42:35.301+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T05:42:35.301+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T05:42:35.305+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T05:42:35.305+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T054235, end_date=20251119T054235
+[2025-11-19T05:42:35.325+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T05:42:35.331+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T05:42:35.332+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-11-19T07:00:53.920+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T07:00:53.931+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T07:00:53.934+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T07:00:53.935+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T07:00:53.939+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T07:00:53.943+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmpv_drdo96']
+[2025-11-19T07:00:53.944+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=232) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T07:00:53.945+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask model_weather
+[2025-11-19T07:00:53.945+0000] {standard_task_runner.py:72} INFO - Started process 235 to run task
+[2025-11-19T07:00:53.966+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host 8e6f5a524378
+[2025-11-19T07:00:53.996+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T07:00:53.997+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T07:00:54.011+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T07:00:54.024+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 144 rows into staging_weather
+[2025-11-19T07:00:54.026+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T07:00:54.026+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T07:00:54.030+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T07:00:54.030+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T070053, end_date=20251119T070054
+[2025-11-19T07:00:54.044+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T07:00:54.051+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T07:00:54.051+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-11-19T07:07:07.989+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T07:07:07.994+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T07:07:07.997+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T07:07:07.997+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T07:07:08.001+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T07:07:08.006+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmpi7oxfyou']
+[2025-11-19T07:07:08.007+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=244) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T07:07:08.007+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask model_weather
+[2025-11-19T07:07:08.007+0000] {standard_task_runner.py:72} INFO - Started process 248 to run task
+[2025-11-19T07:07:08.028+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host 8449ea4971cd
+[2025-11-19T07:07:08.102+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T07:07:08.104+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T07:07:08.144+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T07:07:08.167+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 144 rows into staging_weather
+[2025-11-19T07:07:08.172+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T07:07:08.173+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T07:07:08.184+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T07:07:08.185+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T070707, end_date=20251119T070708
+[2025-11-19T07:07:08.233+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T07:07:08.245+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T07:07:08.246+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2025-11-19T08:26:17.343+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-19T08:26:17.349+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T08:26:17.352+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [queued]>
+[2025-11-19T08:26:17.352+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-19T08:26:17.356+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): model_weather> on 2025-11-18 00:00:00+00:00
+[2025-11-19T08:26:17.360+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'weather_etl_pipeline', 'model_weather', 'scheduled__2025-11-18T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/weather_etl_dag.py', '--cfg-path', '/tmp/tmparf03xgx']
+[2025-11-19T08:26:17.361+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=282) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-19T08:26:17.361+0000] {standard_task_runner.py:105} INFO - Job 6: Subtask model_weather
+[2025-11-19T08:26:17.361+0000] {standard_task_runner.py:72} INFO - Started process 286 to run task
+[2025-11-19T08:26:17.382+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_etl_pipeline.model_weather scheduled__2025-11-18T00:00:00+00:00 [running]> on host 744263722b38
+[2025-11-19T08:26:17.409+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='chai' AIRFLOW_CTX_DAG_ID='weather_etl_pipeline' AIRFLOW_CTX_TASK_ID='model_weather' AIRFLOW_CTX_EXECUTION_DATE='2025-11-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-18T00:00:00+00:00'
+[2025-11-19T08:26:17.410+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-19T08:26:17.425+0000] {logging_mixin.py:190} INFO - [MODEL] Database is ready.
+[2025-11-19T08:26:17.434+0000] {logging_mixin.py:190} INFO - [MODEL] Inserted 144 rows into staging_weather
+[2025-11-19T08:26:17.436+0000] {logging_mixin.py:190} INFO - [MODEL] Aggregated into mart_daily_city_weather
+[2025-11-19T08:26:17.436+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-11-19T08:26:17.440+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-19T08:26:17.440+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_etl_pipeline, task_id=model_weather, run_id=scheduled__2025-11-18T00:00:00+00:00, execution_date=20251118T000000, start_date=20251119T082617, end_date=20251119T082617
+[2025-11-19T08:26:17.462+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-19T08:26:17.469+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-19T08:26:17.470+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

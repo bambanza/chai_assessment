@@ -1,0 +1,11 @@
+FROM apache/airflow:2.10.2
+
+USER airflow
+
+# Make the project root importable as a package root
+ENV PYTHONPATH=/opt/airflow
+
+COPY requirements.txt /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
+
+WORKDIR /opt/airflow
