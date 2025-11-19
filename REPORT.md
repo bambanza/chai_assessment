@@ -21,6 +21,8 @@ The pipeline uses only public, non-sensitive data, including weather information
 
 **The design mirrors standard CHAI-style pipelines:** raw → curated → analytical tables, all orchestrated through Airflow, with logs, retries, and observability built in by default.
 
+(etl.png "ETL image.")
+
 ## 2. Optimization Choices
 
 * **Idempotent processing:** the mart table is rebuilt each run (TRUNCATE + INSERT) to prevent duplication
@@ -54,7 +56,8 @@ The current stack is intentionally simple, but ready to evolve:
 To speed up the project, different AI tools have been used :
 
  * Copilot for coding support.
- * Chatgot for editing documents
+ * Chatgpt for editing documents
+ * Napkin.ai for ETL image generation.
 
 ## 5. Summary
 
